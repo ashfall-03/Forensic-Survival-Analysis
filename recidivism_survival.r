@@ -35,7 +35,7 @@ ggsurvplot(km_fit,
            ylab = "Probability of Non-Recidivism")
 
 
-# 1. Re-run the fit and the plot
+# 6. Re-run the fit and the plot
 p <- ggsurvplot(km_fit, 
            data = forensic_data, 
            risk.table = TRUE, 
@@ -46,9 +46,8 @@ p <- ggsurvplot(km_fit,
            xlab = "Days Post-Release",
            ylab = "Probability of Non-Recidivism")
 
-# 2. Explicitly print it to your screen to check
+# 7. Explicitly print it to your screen to check
 print(p)
 
-# 3. Save it correctly (This is the important part)
-# We use p$plot because p is a list containing the plot AND the risk table
+# 8. Save it correctly
 ggsave("recidivism_plot_v2.png", plot = p$plot, width = 10, height = 7, dpi = 300)
