@@ -34,6 +34,21 @@ ggsurvplot(km_fit,
            xlab = "Days Post-Release",
            ylab = "Probability of Non-Recidivism")
 
-# Save the plot directly to your folder
-ggsave("recidivism_plot.png", plot = last_plot(), width = 8, height = 6, dpi = 300)
-print("Plot has been saved to your project folder!")
+
+# 1. Re-run the fit and the plot
+p <- ggsurvplot(km_fit, 
+           data = forensic_data, 
+           risk.table = TRUE, 
+           pval = TRUE, 
+           conf.int = TRUE,
+           palette = c("#E7B800", "#2E9FDF"), # Professional colors
+           title = "Recidivism Risk: Therapy vs. Control Group",
+           xlab = "Days Post-Release",
+           ylab = "Probability of Non-Recidivism")
+
+# 2. Explicitly print it to your screen to check
+print(p)
+
+# 3. Save it correctly (This is the important part)
+# We use p$plot because p is a list containing the plot AND the risk table
+ggsave("recidivism_plot_v2.png", plot = p$plot, width = 10, height = 7, dpi = 300)
