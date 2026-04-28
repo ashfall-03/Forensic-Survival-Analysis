@@ -1,9 +1,8 @@
 # 1. Load necessary libraries
-# If you don't have them, run: install.packages(c("survival", "survminer"))
 library(survival)
 library(survminer)
 
-# 2. Use the built-in 'mgus' dataset or create a forensic proxy
+# 2. Use the built-in 'mgus' dataset/ create a forensic proxy
 # For this project, we'll simulate a dataset based on common forensic metrics
 set.seed(42)
 n <- 200
@@ -19,7 +18,7 @@ forensic_data <- data.frame(
 surv_obj <- Surv(time = forensic_data$time_to_event, event = forensic_data$status)
 
 # 4. Fit a Cox Regression Model
-# This shows how treatment and priors affect the "Hazard" (risk) of crime
+# This shows how treatment and priors affect the 'Hazard' (risk) of crime
 fit_cox <- coxph(surv_obj ~ treatment_group + prior_offenses, data = forensic_data)
 summary(fit_cox)
 
